@@ -1,39 +1,24 @@
-# node-js-getting-started
+# Zadání:
+Jako uživatel, který si chce půjčit peníze, chci mít možnost vybrat si částku a dobu splácení, abych viděl jaká bude moje měsíční splátka a úrok.
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
+# Features:
+- 2 slidery
+  - 1. slider ovládá částku (amount)
+  - 2. slider ovládá počet měsíců (term)
+- u každého slideru je `<select>`, který zobrazuje všechny možné hodnoty
+- `<select>` je propojený se sliderem - pokud se změní jeden, automaticky se mění i druhý
 
-This application supports the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
+# Poznámky
+API je dostupné na https://js-developer-second-round.herokuapp.com/api/v1/
+  - https://js-developer-second-round.herokuapp.com/api/v1/application/constraints dodá hodnoty pro nastavení kalkulačky (min, max, default value, step)
+  - https://js-developer-second-round.herokuapp.com/api/v1/application/first-loan-offer?amount=XX&term=YY na základě parametrů `amount` a `term` odpoví JSON objektem který obsahuje info o půjčce
 
-## Running Locally
+# Bonus
+- Use Flux (Redux) to capture the state of the application
+- Use Immutable.js or Ramda to save and manipulate the state
+- Use some boilerplate to kick off the project (e.g. [Este](https://github.com/este/este))
+- Cache all requests so the application is more responsive to user input
+- Server rendering
+- Use inline styles
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
-
-```sh
-$ git clone git@github.com:heroku/node-js-getting-started.git # or clone your own fork
-$ cd node-js-getting-started
-$ npm install
-$ npm start
-```
-
-Your app should now be running on [localhost:5000](http://localhost:5000/).
-
-## Deploying to Heroku
-
-```
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
-or
-
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
-## Documentation
-
-For more information about using Node.js on Heroku, see these Dev Center articles:
-
-- [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
-- [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
-- [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
-- [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
+Example of a production application: https://www.vivus.com.mx/

@@ -1,5 +1,7 @@
 var express = require('express');
+var fs = require('fs');
 var app = express();
+var marked = require('marked');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -10,7 +12,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
-  response.render('pages/index');
+  response.render('index', {body: marked(fs.readFileSync('README.md').toString())});
 });
 
 app.get('/api/v1/application/constraints', function (req, res) {
