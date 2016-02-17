@@ -1,21 +1,24 @@
-# Zadání
-Jako uživatel, který si chce půjčit peníze, chci mít možnost vybrat si částku a dobu splácení, abych viděl jaká bude moje měsíční splátka a úrok.
+# Simple loan calculator
 
-## Features
-- 2 slidery
-  - slider ovládá částku (amount)
-  - slider ovládá počet měsíců (term)
-- u každého slideru je `<select>`, který zobrazuje všechny možné hodnoty
-- `<select>` je propojený se sliderem - pokud se změní jeden, automaticky se mění i druhý
+## The task
+As a user who needs to get lend some money I would like to have the ability to choose the amount and term of the loan so that I know what will be my monthly instalment and interest.
 
-## Poznámky
-API je dostupné na https://js-developer-second-round.herokuapp.com/api/v1/
-  - https://js-developer-second-round.herokuapp.com/api/v1/application/constraints dodá hodnoty pro nastavení kalkulačky (min, max, default value, step)
-  - https://js-developer-second-round.herokuapp.com/api/v1/application/first-loan-offer?amount=1000&term=5 na základě parametrů `amount` a `term` odpoví JSON objektem který obsahuje info o půjčce
+### Features
+- 2 sliders
+  - 1st slider controls the `amount`
+  - 2nd slider controls the `term` (number of loan)
+- The calculator has a configuration. The configuration contains the minimum, maximum and step for both `amount` and `term`. It also contains the default value.
+- Each slider has also a `<select>` besides it. The `<select>` contains all possible values (take `step` into account).
+- If either of these control elements change the second one must be updated as well (slider changes -> select is updated and vice versa).
 
-  - https://js-developer-second-round.herokuapp.com/api/v1/application/real-first-loan-offer?amount=1000&term=5 tento endpoint funguje úplně stejně jako `/api/v1/application/first-loan-offer` s tím, že vrací odpovědi jako normální server (včetně nějaké latence)
+### The API
+API is available at https://js-developer-second-round.herokuapp.com/api/v1/
 
-## Bonus
+- https://js-developer-second-round.herokuapp.com/api/v1/application/constraints contains the configuration values for the calculator (min, max, default value, step for both `amount` and `term`)
+- https://js-developer-second-round.herokuapp.com/api/v1/application/first-loan-offer?amount=1000&term=5 based on the variables `amount` and `term` it responds with a JSON object that contains all information about the offered loan.
+- https://js-developer-second-round.herokuapp.com/api/v1/application/real-first-loan-offer?amount=1000&term=5 this endpoint works exactly in the same way as `/api/v1/application/first-loan-offer` the only difference being that it behaves more like a real-life service in the way that it has latency (randomly between 0 and 1000 ms)
+
+### Bonus
 - Use Flux (Redux) to capture the state of the application
 - Use Immutable.js or Ramda to save and manipulate the state
 - Use some boilerplate to kick off the project (e.g. [Este](https://github.com/este/este))
