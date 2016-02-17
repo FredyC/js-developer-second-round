@@ -39,7 +39,7 @@ app.get('/api/v1/application/first-loan-offer', function (req, res) {
       monthlyPayment: amount * 1.2 / term
     })
   else
-    res.status(400).json({error: 'Please provide amount and term in query parameters', received_only: {amount, term}})
+    res.status(400).json({error: 'Please provide amount and term in query parameters', received_only: {amount: amount, term: term}})
 })
 
 app.listen(app.get('port'), function() {
