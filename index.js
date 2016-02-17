@@ -46,7 +46,7 @@ app.get('/api/v1/application/constraints', function (req, res) {
   })
 })
 
-app.get('/api/v1/application/first-loan-offer', function (req, res) {
+function calculateOffer(req, res) {
   var amount = req.query.amount;
   var term = req.query.term;
 
@@ -60,6 +60,14 @@ app.get('/api/v1/application/first-loan-offer', function (req, res) {
     })
   else
     res.status(400).json({error: 'Please provide amount and term in query parameters', received_only: {amount: amount, term: term}})
+}
+
+app.get('/api/v1/application/first-loan-offer', function (req, res) {
+  calculateOffer(req, res)
+})
+
+app.get('/api/v1/application/real-first-loan-offer', function (req, res) {
+  setTimeout(function () { calculateOffer(req, res) }, Math.random() * 1000)
 })
 
 app.listen(app.get('port'), function() {
