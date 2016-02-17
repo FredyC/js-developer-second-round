@@ -11,7 +11,7 @@ Jako uživatel, který si chce půjčit peníze, chci mít možnost vybrat si č
 # Poznámky
 API je dostupné na https://js-developer-second-round.herokuapp.com/api/v1/
   - https://js-developer-second-round.herokuapp.com/api/v1/application/constraints dodá hodnoty pro nastavení kalkulačky (min, max, default value, step)
-  - https://js-developer-second-round.herokuapp.com/api/v1/application/first-loan-offer?amount=XX&term=YY na základě parametrů `amount` a `term` odpoví JSON objektem který obsahuje info o půjčce
+  - https://js-developer-second-round.herokuapp.com/api/v1/application/first-loan-offer?amount=1000&term=5 na základě parametrů `amount` a `term` odpoví JSON objektem který obsahuje info o půjčce
 
 # Bonus
 - Use Flux (Redux) to capture the state of the application

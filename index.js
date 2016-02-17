@@ -19,6 +19,26 @@ app.get('/', function(request, response) {
   response.render('index', {body: marked(fs.readFileSync('README.md').toString())});
 });
 
+app.get('/api/v1', function (req, res) {
+
+  res.json({
+    methods: {
+      application: {
+        constraints: {
+          method: 'GET',
+          url: req.protocol + '://' + req.get('host') + '/api/v1/application/constraints',
+          params: {},
+        },
+        'first-loan-offer': {
+          method: 'GET',
+          url: req.protocol + '://' + req.get('host') + '/api/v1/application/first-loan-offer',
+          params: {amount: 'Integer', term: 'Integer'}
+        }
+      }
+    }
+  })
+})
+
 app.get('/api/v1/application/constraints', function (req, res) {
   res.json({
     amountInterval:          {min: 10, max: 2000, step: 10, defaultValue: 400},  // IntervalBean:BigDecimal    Scrollable Amount interval
