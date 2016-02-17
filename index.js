@@ -26,13 +26,16 @@ app.get('/api/v1/application/first-loan-offer', function (req, res) {
   var amount = req.query.amount;
   var term = req.query.term;
 
-  res.json({
-    totalPrincipal: amount,
-    term: term,
-    totalCostOfCredit: amount / 10,
-    totalRepayableAmount: amount * 1.2,
-    monthlyPayment: amount * 1.2 / term
-  })
+  if (amount && term)
+    res.json({
+      totalPrincipal: amount,
+      term: term,
+      totalCostOfCredit: amount / 10,
+      totalRepayableAmount: amount * 1.2,
+      monthlyPayment: amount * 1.2 / term
+    })
+  else
+    res.status(400).json({error: 'Please provide amount and term in query parameters', received_only: {amount, term}})
 })
 
 app.listen(app.get('port'), function() {
